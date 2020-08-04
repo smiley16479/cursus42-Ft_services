@@ -1,0 +1,3 @@
+resources:
+  - srcs/Nginx/nginx-deployment.yaml
+  - metallb-configmap.yaml
