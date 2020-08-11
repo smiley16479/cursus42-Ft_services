@@ -10,3 +10,4 @@ kubectl explain pod
 kubectl get node -o=custom-columns='DATA:status.addresses[0].address'
 ##entrer ds un des pod
 kubectl exec -it ftps-deployment-78dfb56956-bn8fg -- /bin/bash
+https://linuxconfig.org/how-to-setup-sftp-server-on-ubuntu-18-04-bionic-beaver-with-vsftpd https://kustomize.io/
