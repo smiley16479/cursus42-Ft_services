@@ -21,7 +21,7 @@ metadata:
   labels:
     app: grafana
 spec:
-  replicas: 3
+#  replicas: 3
   selector:
     matchLabels:
       app: ftps 
@@ -32,6 +32,6 @@ spec:
     spec:
       containers:
       - name: ftps
-        image: micahvdk/ftpserver
+        image: sftp/my_image
         ports:
         - containerPort: 21
