@@ -19,6 +19,12 @@ kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manife
 # On first install only
 kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
 
+# Déploiement du tableau de bord
+# L'interface utilisateur du tableau de bord n'est pas déployée par défaut. Pour le déployer, exécutez la commande suivante:
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/aio/deploy/recommended.yaml
+# Pour accéder au tableau de bord
+kubectl proxy
+
 docker build ./srcs/FTPS/ -t sftp/my_image >&2
 
 kubectl apply -f ./srcs/Nginx/nginx-deployment.yaml
