@@ -1,0 +1,127 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx
+  annotations:
+    # metallb.universe.tf/address-pool: "default"
+    # metallb.universe.tf/allow-shared-ip: "shared"
+    metallb.universe.tf/allow-shared-ip: "my_ip"
+  labels:
+    app: nginx
+spec:
+  type: LoadBalancer
+  selector:
+    app: nginx
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 80
+    nodePort: 80
+  - name: https
+    protocol: TCP
+    port: 443
+    targetPort: 443
+    nodePort: 443
+  # - name: ssh
+  #   protocol: TCP
+  #   port: 22
+    # targetPort: 22
+    # nodePort: 22
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: nginx-deployment
+#   labels:
+#     app: nginx
+# spec:
+#   strategy:
+#     type: Recreate
+#   selector:
+#     matchLabels:
+#       app: nginx
+#   template:
+#     metadata:
+#       labels:
+#         app: nginx
+#     spec:
+#       containers:
+#       - name: nginx
+#         image: nginx
+#         imagePullPolicy: Never
+#         ports:
+#         - containerPort: 22
+#           name: ssh
+#         - containerPort: 80
+#           name: http
+#         - containerPort: 443
+#           name: https
+#         livenessProbe:
+#           httpGet:
+#             path: /
+#             port: 443
+#             scheme: HTTPS
+#           initialDelaySeconds: 60
+#           periodSeconds: 20
+#           timeoutSeconds: 10
+#         livenessProbe:
+#           tcpSocket:
+#             port: 22
+#           initialDelaySeconds: 60
+#           periodSeconds: 20
+#           timeoutSeconds: 10
+#         env:
+#         - name: MINIKUBE_IP
+#           value: 192.168.49.1
+
+#Fichier pris de la branche principal: nginx-deployment copy.yaml
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: nginx
+#   annotations:
+#     metallb.universe.tf/address-pool: "my_ip"
+#   labels:
+#     app: nginx
+# spec:
+#   type: LoadBalancer
+#   ports:
+#   - name : http
+#     port : 80
+#     protocol: TCP
+#   - name : https
+#     port : 443
+#     protocol: TCP
+#   selector:
+#     app: nginx
+  
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+spec:
+#  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
+        ports:
+        - containerPort: 443
+        env:
+        - name: MINIKUBE_IP
+          value: 192.168.49.2
