@@ -5,7 +5,7 @@ NC='\033[0m'
 
 echo $(date +%M)
 start=`date +%s`
-pods="influxdb grafana" #mysql phpmyadmin nginx wordpress ftps"
+pods="phpmyadmin nginx wordpress" # influxdb grafana mysql ftps"
 # addons="dashboard" # metrics-server default-storageclass storage-provisioner
 
 setup_env()

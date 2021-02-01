@@ -5,12 +5,12 @@ NC='\033[0m'
 
 echo $(date +%M)
 start=`date +%s`
-pods="influxdb mysql phpmyadmin nginx wordpress ftps grafana"
+pods="influxdb nginx phpmyadmin mysql ftps grafana wordpress"
 # addons="dashboard" # metrics-server default-storageclass storage-provisioner
 
 setup_env()
 {
-	minikube delete
+	# minikube delete
 	if [ `uname` = Linux ]; then
 		## use docker without sudo as the 42's VM doesn't allow it by default
 		## check minikube version=v11
@@ -91,5 +91,5 @@ echo mysql mysql:pass
 echo wordpress wordpress:pass
 echo -e "\a"
 
-## Déploiement du tableau de bord, soit :
-minikube dashboard & &> /dev/null
+## Déploiement du tableau de bord :
+# minikube dashboard & &> /dev/null

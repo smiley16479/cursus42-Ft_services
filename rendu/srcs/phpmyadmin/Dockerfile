@@ -3,6 +3,7 @@ FROM	telegraf
 RUN apk update && apk add nginx mysql mysql-client php7 php7-fpm php7-opcache php7-gd \
 		php7-mysqli php7-zlib php7-curl php7-mbstring php7-json php7-session php7-zip
 
+#Set the database and host in telegraf for influxdb
 RUN sed -i -e "s/TMPDB/phpmyadmin/g" -e "s/TMPHN/phpmyadmin/" /etc/telegraf/telegraf.conf
 
 #Nginx

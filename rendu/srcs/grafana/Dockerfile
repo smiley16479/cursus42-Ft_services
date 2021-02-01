@@ -1,7 +1,7 @@
 FROM telegraf
 MAINTAINER adtheus@42
 
-#Set the database and host in telegraf for influxdb
+#Set the database and hostname in telegraf for influxdb
 RUN sed -i -e "s/TMPDB/grafana/g" -e "s/TMPHN/grafana/" /etc/telegraf/telegraf.conf
 #install grafana
 RUN apk update && apk add grafana --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted --no-cache
