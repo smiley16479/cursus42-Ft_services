@@ -25,4 +25,4 @@ $cfg['Servers'][$i]['password'] = '';
 $cfg['UploadDir'] = '';
 $cfg['SaveDir'] = '';
 $cfg['PmaAbsoluteUri'] = './';
-$cfg['TempDir'] = 'tmp';
+$cfg['TempDir'] = '/tmp';

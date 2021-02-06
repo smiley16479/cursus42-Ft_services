@@ -8,7 +8,6 @@ RUN apk update && apk add nginx openssl
 RUN sed -i -e "s/TMPDB/nginx/g" -e "s/TMPHN/nginx/" /etc/telegraf/telegraf.conf
 
 #Nginx
-RUN mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
 COPY srcs/nginx.conf /etc/nginx/
 
 #Create certifs
