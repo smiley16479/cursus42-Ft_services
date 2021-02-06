@@ -10,7 +10,7 @@ pods="influxdb nginx phpmyadmin mysql ftps grafana wordpress"
 
 setup_env()
 {
-	# minikube delete
+	minikube delete
 	if [ `uname` = Linux ]; then
 		## use docker without sudo as the 42's VM doesn't allow it by default
 		## check minikube version=v11
